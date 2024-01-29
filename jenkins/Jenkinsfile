@@ -26,5 +26,15 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
+
+        stage('Release'){
+            steps{
+                // This is where you'd put commands to create a release (e.g., tag the code, update version numbers)
+                echo 'Creating a release...'
+                sh 'git tag -a v1.0.0 -m "Release version 1.0.0"'
+                sh 'git push origin v1.0.0'
+            }
+   
+         }
     }
 }
